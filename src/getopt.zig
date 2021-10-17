@@ -66,7 +66,7 @@ fn ParsedOption(comptime optstring: []const u8) type {
                 // we're using single char args, so u8 is sufficient
                 .tag_type = u8,
                 .fields = fields[0..],
-                .is_exhaustive = false,
+                .is_exhaustive = true,
                 .decls = decls,
             },
         };
@@ -224,7 +224,7 @@ test "parse options" {
             .d => |d_opt| flags.d_flag = d_opt,
             .e => |e_opt| flags.e_flag = e_opt,
             .f => flags.f_flag = true,
-            else => break,
+            //else => break,
         }
     }
 
