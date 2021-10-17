@@ -1,6 +1,6 @@
 # getopt
 
-This is a type-safe getopt-style options parsing library for zig. Type-safe, in this context, means that it can distinguish between options that take arguments, and options that don't. It's built on ugly metaprogramming constructs, and has a tendency to crash zls. 
+This is a type-safe getopt-style options parsing library for zig. Type-safe, in this context, means that it can distinguish between options that take arguments, and options that don't. It's built on ugly metaprogramming constructs, and has a tendency to crash zls. This was written as a proof of concept while I tried to explore what was possible with Zig's comptime facilities. You probably shouldn't use this; I know I won't.
 
 ## Example usage
 
