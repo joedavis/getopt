@@ -2,8 +2,10 @@ const std = @import("std");
 const getopt = @import("getopt");
 
 pub fn main() !void {
-    const alloc = std.heap.c_allocator;
-    const args = try std.process.argsAlloc(alloc);
+    var gpa = std.heap.GeneralPurposeAllocator(.{}){};
+    defer std.debug.assert(!gpa.deinit());
+    const args = try std.process.argsAlloc(&gpa.allocator);
+    defer gpa.allocator.free(args);
 
     var opts = getopt.OptionParser("abcd:e:fg:h"){ .argv = args[1..] };
     while (opts.next()) |opt| {
