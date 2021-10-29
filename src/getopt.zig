@@ -28,10 +28,10 @@ fn ParsedOption(comptime optstring: []const u8) type {
     const T = FlagType(optstring);
     const n_fields = optstring.len - std.mem.count(u8, optstring, ":");
 
-    // There's (quite) a few bits below that I'm not particularly happy with. 
+    // There's (quite) a few bits below that I'm not particularly happy with.
     // My main problem is the fact that returning slices of arrays defined in
     // inner blocks. This seems ok, because it's comptime. I'm not 100% though
-    // But it does appear to work. 
+    // But it does appear to work.
 
     const TagType = blk: {
         var fields: [n_fields + 2]std.builtin.TypeInfo.EnumField = undefined;
@@ -253,7 +253,7 @@ test "missing parameter" {
     var found_missing = false;
     while (opts.next()) |opt| {
         switch (opt) {
-            .missing => |c| { 
+            .missing => |c| {
                 try expect(c == 'e');
                 found_missing = true;
             },
